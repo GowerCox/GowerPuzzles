@@ -1,0 +1,135 @@
+@charset "UTF-8";
+
+:root {
+	--mainDimension: 480px;
+	--basicWidth: 487px;
+	--basicHeight: 667px;
+}
+
+
+#mainContainer {
+  position: absolute;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  border: 5px solid DarkBlue;
+  box-sizing: border-box;
+}
+
+#headerPortion {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 21%;
+  width:  100%;
+  background: GoldenRod;
+  border-bottom: 5px solid DarkBlue;
+  box-sizing: border-box;
+}
+#MCHP_MSG {
+  position: absolute;
+  top: -10%;
+  left: 12%;
+  text-align: center;
+  font: italic small-caps bold 32px/1.5 "Apple Chancery";
+}
+
+#puzzleList {
+  position: absolute;
+  left: 0%;
+  top: 21%;
+  height: 79%;
+  width:  100%;
+  background-image: linear-gradient(to right top, #78184f, #834275, #8c6697, #9788b3, #a7a9ca, #a1acc7, #9fafc2, #a0b0bd, #8296a0, #667d84, #4c6568, #354d4c);
+}
+
+
+#playWEG {
+  position: absolute;
+  background-color: red;
+  padding: 2% 2%;
+  top: 10%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+#play234560 {
+  position: absolute;
+  background-color: red;
+  padding: 2% 2%;
+  top: 20%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+#playNaturesPyramid {
+  position: absolute;
+  background-color: red;
+  padding: 2% 2%;
+  top: 30%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+/* ********************************** */
+#gameContainer {
+  position: absolute;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  display: none;
+  box-sizing: border-box;
+}
+#closeX {
+  position: absolute;
+  display: none;
+  z-index: 5;
+  top: 10px;
+  left: 456px;
+  color: black;
+  font-size: 63px;
+  font-weight: bold;
+}
+#closeX:hover,
+#closeX:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+/* ********************************** */
+#gameFrame {
+  position: absolute;
+  left: 0%;
+  top: 0%;
+  height: 100%;
+  width:  100%;
+  border: none;
+}
+
+/* ********************************** */
+.phaseInGeneral {
+  animation: phaseIn 1.5s;
+}
+ @keyframes phaseIn {
+ 	from { opacity: 0.0;}
+ 	to { opacity: 1.0;}
+}
+
+/* ****************************** */
+.phaseOutGeneral {
+	animation: phaseOut 1.5s;
+}
+@keyframes phaseOut {
+  from { opacity: 1.0; }
+  to { opacity: 0; }
+}
+
+
+
+
+
+
+
+
+

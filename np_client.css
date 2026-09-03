@@ -1,0 +1,632 @@
+@charset "UTF-8";
+
+:root {
+	--basis: 420px;
+	--basicWidth: var(--basis);
+	--basicHeight: var(--basis);
+	--fontSize: calc(var(--basis)*0.04762);
+	--bottomBoardTop: calc(var(--basis)*1.1);
+	--bottomBoardWidth: calc(var(--basis)*1.0);
+	--bottomBoardHeight: calc(var(--basis)*0.35);
+}
+
+body {
+  background-color: HoneyDew;
+}
+
+.renderInvisible {
+  visibility: hidden;
+}
+
+/* *********************************** */
+#welcomeScreen {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  background-color: Crimson;
+  border: 5px solid black;
+}
+#helloBox {
+  position: absolute;
+  color: white;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  background-image: radial-gradient(circle, brown, blue);
+  right: 25%;
+  top: 15%;
+  height: 50%;
+  width:  50%;
+  border: 5px solid Chartreuse;
+  border-radius: 12%;
+  text-align: center;
+  padding: 4%;
+}
+#sloganContainer {
+  position: absolute;
+  top: 50%;
+  height: 35%;
+  width:  70%;
+  right: 15%;
+  background-color: BurlyWood;
+  border: 5px solid green;
+  border-radius: 9%;
+}
+#sloganSpan {
+  position: absolute;
+  top: 10%;
+  width:  80%;
+  right: 10%;
+  color: DarkGreen;
+}
+#buttonContainer {
+  position: absolute;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*0.75);
+  top: 80%;
+  height: 18%;
+  width:  40%;
+  left: 25%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  padding-left: 3%;
+  background-color: Aquamarine;
+  color: black;
+  border: 5px solid DarkBlue;
+  border-radius: 9%;
+  box-sizing: border-box;
+}
+
+#playButton {
+  position: absolute;
+  background-color: blue;
+  color: white;
+  padding: 2% 2%;
+  left: 7%;
+  height: 50%;
+  width:  35%;
+  text-align: center;
+  font-size: calc(var(--fontSize)*0.8);
+  font-family: "Times New Roman", Times, serif;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#instructionButton {
+  position: absolute;
+  background-color: blue;
+  color: white;
+  padding: 2% 2%;
+  left: 50%;
+  height: 75%;
+  width:  40%;
+  text-align: center;
+  font-size: calc(var(--fontSize)*0.8);
+  font-family: "Times New Roman", Times, serif;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#instructionOverlay {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  background-color: ForestGreen;
+  border: 8px solid black;
+  border-radius: 6%;
+}
+
+#instructionDescriptionSpan {
+  position: absolute;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*0.8);
+  background-color: grey;
+  left: 4%;
+  top: 6%;
+  height: 88%;
+  width:  92%;
+  border: 5px solid Chartreuse;
+  border-radius: 12%;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+/* *********************************** */
+#titleContainer {
+  position: absolute;
+  top: calc(var(--basis)*0.05);
+  left: calc(var(--basis)*0.0);
+  width: calc(var(--basis)*1.0);
+  height: calc(var(--basis)*0.25);
+}
+#TCLeft {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  color: blue;
+  text-shadow: 1.0em 0 1.0em blue, 0 0 1.0em blue, 0 0 1.0em blue;
+  font-size: calc(var(--fontSize)*2.7);
+  font-family: 'Brush Script MT', cursive;  
+}
+#TCRight {
+  position: absolute;
+  top: 10%;
+  left: 60%;
+  color: DarkGreen;
+  text-shadow: 1.0em 0 1.0em green, 0 0 1.0em green, 0 0 1.0em green;
+  font-size: calc(var(--fontSize)*2.7);
+  font-family: 'Brush Script MT', cursive;
+}
+
+/* *********************************** */
+#mainPyramid {
+  position: absolute;
+  top: calc(var(--basicHeight)*0.0952);
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  font-size: calc(var(--fontSize)*3.0);
+  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+}
+.pyramidLevel {
+  height: 33.33%;
+}
+.pyramidLevel div {
+  margin-top: 11.9%;
+}
+
+#pl1 {
+  background-color: Cyan;
+}
+#pl1_1 {
+  position: absolute;
+  top: 0%;
+  left: 44%;
+  font-size: calc(var(--fontSize)*2.2);
+}
+#pl1LevelLabel {
+  position: absolute;
+  left: 38%;
+  text-align: center;
+  width: 25%;
+  height: 1%;
+  top: 14%;
+  font-size: calc(var(--fontSize)*0.7);
+  font-family: "Times New Roman", Times, serif;
+}
+.eCommon2 {
+  top: 35.5%;
+}
+#pl2 {
+  background-color: ForestGreen;
+}
+#pl2_1 {
+  position: absolute;
+  left: 31.5%;
+}
+#pl2_2 {
+  position: absolute;
+  left: 55.5%;
+}
+#pl2LevelLabel {
+  position: absolute;
+  left: 30%;
+  text-align: center;
+  width: 40%;
+  top: 26%;
+  font-size: calc(var(--fontSize)*0.7);
+  font-family: "Times New Roman", Times, serif;
+}
+.eCommon3 {
+  top: 68.5%;
+}
+#pl3 {
+  background-color: DodgerBlue;
+}
+#pl3_1 {
+  position: absolute;
+  left: 19%;
+}
+#pl3_2 {
+  position: absolute;
+  left: 44%;
+}
+#pl3_3 {
+  position: absolute;
+  left: 69%;
+}
+
+#pl3LevelLabel {
+  position: absolute;
+  left: 21.43%;
+  text-align: center;
+  width: 60%;
+  top: 57%;
+  font-size: calc(var(--fontSize)*1.25);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.emojiSlot {
+  position: absolute;
+  width: 11.9%;
+  height: 11.9%;
+  rotate: 45deg;
+  background-color: black;
+}
+.emojiSlotSpin {
+  animation-name: emojiSlotSpinAnimation;
+  animation-duration: 0.333s;
+}
+@keyframes emojiSlotSpinAnimation {
+  from { 
+     transform: rotate3d(0);
+     opacity: 1.0;
+     }
+  to { 
+     transform: rotate3d(1, 1, 0, 180deg);
+     opacity: 0.0;
+     }
+}
+
+/* *********************************** */
+#bottomBoard {
+  position: absolute;
+  top: var(--bottomBoardTop);
+  left: 0;
+  width: var(--bottomBoardWidth);
+  height: var(--bottomBoardHeight);
+  background-color: black;
+  border: 5px solid white;
+  border-radius: 15%;
+}
+#ETLabel {
+  position: absolute;
+  top: 2%;
+  left: 23%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+
+
+#emojiTray {
+  position: absolute;
+  top: 16%;
+  left: 5%;
+  width: 90%;
+  height: 54%;
+  box-sizing: border-box;
+  background-color: pink;
+  border: 5px solid black;
+  border-radius: 12%;
+}
+.emojiTrayDesc {
+  position: absolute;
+  font-size: calc(var(--fontSize)*1.45);
+  cursor: pointer;
+}
+.emojiTrayDescExpanded {
+  position: absolute;
+  width: 17.1%;
+  height: 17.1%;
+  font-size: calc(var(--fontSize)*2.3);
+}
+#emojiTraySlot1 {
+  left: 9.47%;
+}
+#emojiTraySlot2 {
+  left: 32.1%;
+}
+#emojiTraySlot3 {
+  left: 57.74%;
+}
+#emojiTraySlot4 {
+  left: 77.37%;
+}
+#emojiTraySlot5 {
+  top: 46%;
+  left: 9.47%;
+}
+#emojiTraySlot6 {
+  top: 46%;
+  left: 32.1%;
+}
+#emojiTraySlot7 {
+  top: 46%;
+  left: 57.74%;
+}
+#emojiTraySlot8 {
+  top: 46%;
+  left: 77.37%;
+}
+
+#scoreLabel {
+  position: absolute;
+  top: 75%;
+  left: 6%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+#scoreField {
+  position: absolute;
+  top: 57%;
+  left: 19%;
+  height: 21%;
+  width: 12%;
+  font-size: calc(var(--fontSize)*1.1);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: 2px solid black;
+}
+.scoreFieldWhite {
+  background-color: white;
+}
+.scoreFieldRed {
+  background-color: red;
+}
+#reButton {
+  position: absolute;
+  left: 35%;
+  top: 71%;
+  width: 22%;
+  height: 21%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*0.8);
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#reButton:disabled {
+  position: absolute;
+  left: 35%;
+  top: 71%;
+  width: 22%;
+  height: 21%;
+  background-color: grey;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*0.8);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+#retriesLabel {
+  position: absolute;
+  top: 70%;
+  left: 65%;
+  font-size: calc(var(--fontSize)*0.85);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+#retriesField {
+  position: absolute;
+  top: 57%;
+  left: 79%;
+  height: 21%;
+  width: 5%;
+  font-size: calc(var(--fontSize)*1.1);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: 2px solid black;
+}
+
+
+/* ************************************ */
+.ETAnimate2 {
+  animation-name: slot2_to_slot1;
+  animation-duration: 0.3s;
+}
+.ETAnimate3 {
+  animation-name: slot3_to_slot2;
+  animation-duration: 0.3s;
+}
+.ETAnimate4 {
+  animation-name: slot4_to_slot3;
+  animation-duration: 0.3s;
+}
+.ETAnimate5 {
+  animation-name: slot5_to_slot4;
+  animation-duration: 0.3s;
+}
+.ETAnimate6 {
+  animation-name: slot6_to_slot5;
+  animation-duration: 0.3s;
+}
+.ETAnimate7 {
+  animation-name: slot7_to_slot6;
+  animation-duration: 0.3s;
+}
+.ETAnimate8 {
+  animation-name: slot8_to_slot7;
+  animation-duration: 0.3s;
+}
+
+@keyframes slot2_to_slot1 {
+  from { left: 32.10%; }
+  to { left: 9.47%; }
+}
+
+@keyframes slot3_to_slot2 {
+  from { left: 54.74%; }
+  to { left: 32.10%; }
+}
+
+@keyframes slot4_to_slot3 {
+  from { left: 77.37%; }
+  to { left: 54.74%; }
+}
+
+@keyframes slot5_to_slot4 {
+  from { top: 50%; left: 9.47%; }
+  to {  top: 0%; left: 77.37%; }
+}
+
+@keyframes slot6_to_slot5 {
+  from { left: 32.10%; }
+  to {  left: 9.47%; }
+}
+
+@keyframes slot7_to_slot6 {
+  from { left: 54.74%; }
+  to { left: 32.10%; }
+}
+
+@keyframes slot8_to_slot7 {
+  from { left: 77.37%; }
+  to { left: 57.74%; }
+}
+
+
+/* ************************************ */
+#pointsFlasher {
+  position: absolute;
+  top: calc(var(--basis)*0.55);
+  left: calc(var(--basis)*0.10);
+  width: calc(var(--basis)*0.80);
+  height: calc(var(--basis)*0.25);
+  background-color: Gold;
+  border: 5px solid black;
+  border-radius: 12%;
+}
+.noMatch {
+  position: absolute;
+  left: 14%;
+  top: 5%;
+  color: red;
+  font-size: calc(var(--fontSize)*1.5);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
+}
+.match {
+  position: absolute;
+  left: 14%;
+  top: 5%;
+  color: blue;
+  font-size: calc(var(--fontSize)*1.5);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ************************************ */
+#TLOption {
+  position: absolute;
+  top: calc(var(--basis)*0.25);
+  left: calc(var(--basis)*0.10);
+  width: calc(var(--basis)*0.80);
+  height: calc(var(--basis)*0.65);
+  background-color: LightCoral;
+  border: 5px solid black;
+  border-radius: 12%;
+}
+#TLOLabel {
+  position: absolute;
+  left: 6%;
+  top: 5%;
+  color: black;
+  font-size: calc(var(--fontSize)*1.4);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
+}
+#TIMsg {
+  position: absolute;
+  left: 10%;
+  top: 20%;
+  color: black;
+  font-size: calc(var(--fontSize)*1.2);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+}
+#LIMsg {
+  position: absolute;
+  left: 10%;
+  top: 42%;
+  color: black;
+  font-size: calc(var(--fontSize)*1.2);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+}
+#takeIt {
+  position: absolute;
+  left: 25%;
+  top: 78%;
+  width: 22%;
+  height: 18%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*1.0);
+  margin: 4px 2px;
+  cursor: pointer;
+}
+#leaveIt {
+  position: absolute;
+  left: 51%;
+  top: 78%;
+  width: 27%;
+  height: 18%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--fontSize)*1.0);
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+/* ************************************ */
+#advanceLevelPopup {
+  position: absolute;
+  top: calc(var(--basis)*0.25);
+  left: calc(var(--basis)*0.10);
+  width: calc(var(--basis)*0.80);
+  height: calc(var(--basis)*0.65);
+  background-color: SaddleBrown;
+  border: 5px solid black;
+  border-radius: 12%;
+}
+#ALMsg {
+  position: absolute;
+  left: 6%;
+  top: 26%;
+  color: white;
+  font-size: calc(var(--fontSize)*1.9);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* ************************************ */
+#leaveItPopup {
+  position: absolute;
+  top: calc(var(--basis)*0.25);
+  left: calc(var(--basis)*0.10);
+  width: calc(var(--basis)*0.80);
+  height: calc(var(--basis)*0.65);
+  background-color: DarkRed;
+  border: 5px solid black;
+  border-radius: 12%;
+}
+#LIPMsg {
+  position: absolute;
+  left: 6%;
+  top: 16%;
+  color: white;
+  font-size: calc(var(--fontSize)*1.9);
+  font-family: "Times New Roman", Georgia, serif;
+  font-weight: bold;
+  text-align: center;
+}
+
+
+
+
+
+
+

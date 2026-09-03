@@ -1,0 +1,196 @@
+@charset "UTF-8";
+
+:root {
+	--mainDimension: 480px;
+	--fontSize: calc(var(--mainDimension)*0.05);
+	--highBorder: 12%;
+	--lowBorder: 67%;
+}
+
+/*
+@media screen and (max-width: 520px) {
+  :root {
+    --mainDimension: 300px;
+  }
+}
+*/
+
+.renderInvisible {
+  visibility: hidden;
+}
+
+#mainContainer {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: var(--mainDimension);
+  height: calc(var(--mainDimension)*1.2);
+  border: 5px solid black;
+  border-radius: 12%;
+  overflow: hidden;
+}
+
+#titlePortion {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: var(--highBorder);
+  background-color: Indigo;
+}
+
+#TPTitle {
+  position: absolute;
+  top: 21%;
+  left: 15%;
+  color: white;
+  font-size: calc(var(--fontSize)*1.6);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+#instructionPortion {
+  position: absolute;
+  top: var(--highBorder);
+  left: 0%;
+  width: 100%;
+  height: calc(var(--lowBorder) - var(--highBorder)); 
+  background-color: DarkGreen;
+}
+
+#IPMsg1 {
+  position: absolute;
+  top: 7%;
+  left: 5%;
+  width: 90%;
+  height: 50%;
+  text-align: center;
+  color: white;
+  font-size: calc(var(--fontSize)*1.1);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#IPMsg2 {
+  position: absolute;
+  top: 59%;
+  left: 15%;
+  width: 62%;
+  height: 40%;
+  text-align: center;
+  color: yellow;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#playPortion {
+  position: absolute;
+  top: var(--lowBorder);
+  left: 0%;
+  height: calc(100% - var(--lowBorder));
+  width: 100%;
+  background-color: CadetBlue;
+}
+#PPLabel1 {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  height: 23%;
+  width: 61%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#guessField {
+  position: absolute;
+  top: 7%;
+  left: 69%;
+  height: 26%;
+  width: 10%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  text-align: center;
+  border: 2px solid black;
+  background-color: white;
+}
+
+#oopsPopup {
+  position: absolute;
+  top: calc(var(--mainDimension)*0.8);
+  left: calc(var(--mainDimension)*0.25);
+  width: calc(var(--mainDimension)*0.6);
+  height: calc(var(--mainDimension)*0.25);
+  border: 5px solid black;
+  border-radius: 12%;
+  background-color: yellow;
+}
+#OPMSG {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  color: black;
+}
+#playPortionCorrectAnswer {
+  position: absolute;
+  top: var(--lowBorder);
+  left: 0%;
+  height: calc(100% - var(--lowBorder));
+  width: 100%;
+  background-color: DarkOrange;
+}
+#PPCALabel {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  height: 23%;
+  width: 61%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+}
+.replayButtonClass {
+  position: absolute;
+  top: 20%;
+  left: 70%;
+  height: 20%;
+  width:  20%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-size: calc(var(--fontSize)*0.8);
+  font-family: "Times New Roman", Georgia, serif;
+  cursor: pointer;
+}
+#wrongAnswer {
+  position: absolute;
+  top: var(--lowBorder);
+  left: 0%;
+  height: calc(100% - var(--lowBorder));
+  width: 100%;
+  background-color: CadetBlue;
+}
+
+#WALabel {
+  position: absolute;
+  top: 15%;
+  left: 25%;
+  height: 23%;
+  width: 61%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+#sorryGameOver {
+  position: absolute;
+  top: var(--lowBorder);
+  left: 0%;
+  height: calc(100% - var(--lowBorder));
+  width: 100%;
+  background-color: red;
+}
+#SGOLabel {
+  position: absolute;
+  top: 8%;
+  left: 5%;
+  height: 23%;
+  width: 61%;
+  font-size: calc(var(--fontSize)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}

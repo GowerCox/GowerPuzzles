@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Logic puzzle">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="WEGClient.css">
+<title>World's Easiest Game</title>
+</head>
+<body>
+
+<div id="mainContainer">
+	<div id="titlePortion">
+		<span id="TPTitle">World's Easiest Game</span>
+	</div>
+	<div id="instructionPortion">
+		<span id="IPMsg1"></span>
+		<span id="IPMsg2"></span>
+	</div>
+	<div id="playPortion">
+		<span id="PPLabel1">Enter your guess here:</span>
+		<input id="guessField" type="text" maxlength="1" autocomplete="off">
+	</div>
+	<div id="playPortionCorrectAnswer" class="renderInvisible">
+		<span id="PPCALabel"></span>
+		<button type="button" class="replayButtonClass"
+	    onclick="resetMC()" ontouchstart="resetT()">Replay</button>  
+	</div>
+	<div id="wrongAnswer" class="renderInvisible">
+		<span id="WALabel"></span>
+	</div>
+	<div id="sorryGameOver" class="renderInvisible">
+		<span id="SGOLabel"></span>
+		<button type="button" class="replayButtonClass"
+	    onclick="resetMC()" ontouchstart="resetT()">Replay</button>  
+	</div>
+</div>
+
+<div id="oopsPopup" class="renderInvisible">
+	<span id="OPMSG">Please enter<br>a "1" or a "2"</span>
+</div>
+
+</body>
+<script src="WEGMain.js"></script>
+<script src="np_utilities.js"></script>
+</html>
+

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Logic puzzle">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="np_client.css">
+<title>Nature's Pyramid</title>
+</head>
+<body>
+
+<div id="welcomeScreen" class="renderInvisible">
+  <div id="helloBox">
+    <span>Welcome<br> to <br>Nature's Pyramid<br><br></span>
+    <div id="sloganContainer">
+      <span id="sloganSpan"></span>
+    </div>
+  </div>
+  <div id="buttonContainer">
+    <button type="button" id="playButton"
+	    onclick="enactPlayMC()"
+	    ontouchstart="enactPlayT()">Play</button>   
+    <button type="button" id="instructionButton"
+	    onclick="displayInstructionsMC()"
+	    ontouchstart="displayInstructionsT()">How to<br>Play</button>
+  </div>
+</div>
+
+<div id="instructionOverlay" class="renderInvisible"
+	    onclick="closeInstructionOverlayMC()"
+	    ontouchstart="closeInstructionOverlayT()">
+    <span id="instructionDescriptionSpan"></span>
+</div>
+
+<div id="titleContainer" class="renderInvisible">
+	<span id="TCLeft">Nature's</span>
+	<span id="TCRight">Pyramid</span>
+</div>
+
+<div id="mainPyramid" class="renderInvisible">
+  <div id="pl1" class="pyramidLevel">
+     <div id="pl1_1" class="emojiSlot renderInvisible"></div>
+     <div id="pl1LevelLabel" class="renderInvisible">AIR LEVEL</div>
+  </div>
+  <div id="pl2" class="pyramidLevel">
+     <div id="pl2_1" class="eCommon2 emojiSlot renderInvisible"></div>
+     <div id="pl2_2" class="eCommon2 emojiSlot renderInvisible"></div>
+     <div id="pl2LevelLabel" class="renderInvisible">LAND/FOREST LEVEL</div>
+  </div>
+  <div id="pl3" class="pyramidLevel">
+     <div id="pl3_1" class="eCommon3 emojiSlot renderInvisible"></div>
+     <div id="pl3_2" class="eCommon3 emojiSlot renderInvisible"></div>
+     <div id="pl3_3" class="eCommon3 emojiSlot renderInvisible"></div>
+     <div id="pl3LevelLabel" class="renderInvisible">SEA LEVEL</div>
+  </div>	
+</div>
+
+<div id="bottomBoard" class="renderInvisible">
+	<span id="ETLabel"></span>
+	<div id="emojiTray">
+	  <span id="emojiTraySlot1" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot2" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot3" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot4" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot5" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot6" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot7" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	  <span id="emojiTraySlot8" class="emojiTrayDesc" 
+	  	onclick="emojiClickMC(this)"
+		ontouchstart="emojiClickT(this)"></span>
+	</div>
+	<span id="scoreLabel">Score:</span>
+	<p id="scoreField" class="scoreFieldWhite"></p>
+	<div>
+		<button id="reButton" type="button"
+		onclick="resetMC()"
+		ontouchstart="resetT()">RESET!</button>
+	</div>
+	<span id="retriesLabel">Retries<br>left:</span>
+	<p id="retriesField" class="scoreFieldWhite"></p>
+</div>
+
+<div id="pointsFlasher" class="renderInvisible">
+	<span id="PFMessage"></span>
+</div>
+
+<div id="TLOption" class="renderInvisible">
+	<span id="TLOLabel">For this level just played:</span>
+	<span id="TIMsg"></span>
+	<span id="LIMsg"></span>
+	<button id="takeIt" type="button"
+		onclick="takeItMC()"
+		ontouchstart="takeItT()">Take it</button>
+	<button id="leaveIt" type="button"
+		onclick="leaveItMC()"
+		ontouchstart="leaveItT()">Leave it</button>
+</div>
+
+<div id="advanceLevelPopup" class="renderInvisible">
+	<span id="ALMsg"></span>
+</div>
+
+<div id="leaveItPopup" class="renderInvisible">
+	<span id="LIPMsg"></span>
+</div>
+
+
+
+</body>
+<script src="np_main.js"></script>
+<script src="np_utilities.js"></script>
+</html>

@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Logic puzzle">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="234569_client.css">
+<title>234569</title>
+</head>
+<body>
+
+<div id="welcomeScreen" class="renderInvisible">
+	<span id="welcomeScreenSpan"></span>
+	<button type="button" id="playButton"
+	onclick="enactPlayCallbackMC()"
+    ontouchstart="enactPlayCallbackT()">PLAY!</button>
+</div>
+
+<div id="arrowContainer" class="renderInvisible">
+	<button type="button" id="arrowTop_0" class="arrowTop" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowTop_1" class="arrowTop" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowTop_2" class="arrowTop" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowRight_0" class="arrowRight" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowRight_1" class="arrowRight" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowRight_2" class="arrowRight" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowRight_3" class="arrowRight" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowLeft_0" class="arrowLeft" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowLeft_1" class="arrowLeft" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowLeft_2" class="arrowLeft" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowLeft_3" class="arrowLeft" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowBottom_0" class="arrowBottom" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowBottom_1" class="arrowBottom" onclick="arrowCallbackMC(this)"></button>
+	<button type="button" id="arrowBottom_2" class="arrowBottom" onclick="arrowCallbackMC(this)"></button>
+	<div id="leftUndercolor"></div>
+	<div id="midUndercolor"></div>
+	<div id="rightUndercolor"></div>
+</div>
+
+<div id="nonArrowContainer" class="renderInvisible">
+	<div id="leftUndercolor_na"></div>
+	<div id="midUndercolor_na"></div>
+	<div id="rightUndercolor_na"></div>
+</div>
+
+<div id="segmentGrid" class="renderInvisible">
+  <div id="square_0_0_perimeter" class="squarePerimeter">
+    <div id="IP_0_0" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_0_1_perimeter" class="squarePerimeter">
+    <div id="IP_0_1" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_0_2_perimeter" class="squarePerimeter">
+    <div id="IP_0_2" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_1_0_perimeter" class="squarePerimeter">
+    <div id="IP_1_0" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_1_1_perimeter" class="squarePerimeter">
+    <div id="IP_1_1" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_1_2_perimeter" class="squarePerimeter">
+    <div id="IP_1_2" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_2_0_perimeter" class="squarePerimeter">
+    <div id="IP_2_0" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_2_1_perimeter" class="squarePerimeter">
+    <div id="IP_2_1" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_2_2_perimeter" class="squarePerimeter">
+    <div id="IP_2_2" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_3_0_perimeter" class="squarePerimeter">
+    <div id="IP_3_0" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_3_1_perimeter" class="squarePerimeter">
+    <div id="IP_3_1" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  <div id="square_3_2_perimeter" class="squarePerimeter">
+    <div id="IP_3_2" class="innerPerimeter innerPerimeterDefault">
+    </div>
+  </div>
+  
+</div>
+
+<div id="rowOverlayGrid" class="renderInvisible">
+
+	<div id="OGenericRow">
+		<div id="rowSlider">
+		  <div id="squareOGR_leftee_perimeter" class="squarePerimeter">
+		    <div id="OGRIP_leftee" class="innerPerimeter">
+		    </div>
+		  </div>
+		  <div id="squareOGR_0_perimeter" class="squarePerimeter">
+		    <div id="OGRIP_0" class="innerPerimeter">
+		    </div>
+		  </div>
+		  <div id="squareOGR_1_perimeter" class="squarePerimeter">
+		    <div id="OGRIP_1" class="innerPerimeter">
+		    </div>
+		  </div>
+		  <div id="squareOGR_2_perimeter" class="squarePerimeter">
+		    <div id="OGRIP_2" class="innerPerimeter">
+		    </div>
+		  </div>
+		  <div id="squareOGR_rightee_perimeter" class="squarePerimeter">
+		    <div id="OGRIP_rightee" class="innerPerimeter">
+		    </div>
+		  </div>
+		</div>  
+	</div>
+
+</div>
+
+<div id="columnOverlayGrid" class="renderInvisible">
+
+	<div id="OGenericColumn">
+		<div id="columnSlider">
+			<div id="columnOGC_uppee_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_uppee" class="innerPerimeter">
+			    </div>
+			</div>
+			<div id="columnOGC_0_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_0" class="innerPerimeter">
+			    </div>
+			</div>
+			<div id="columnOGC_1_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_1" class="innerPerimeter">
+			    </div>
+			</div>
+			<div id="columnOGC_2_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_2" class="innerPerimeter">
+			    </div>
+			</div>
+			<div id="columnOGC_3_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_3" class="innerPerimeter">
+			    </div>
+			</div>
+			<div id="columnOGC_downee_perimeter" class="squarePerimeter">
+			    <div id="OGCIP_downee" class="innerPerimeter">
+			    </div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<div id="digitGrid" class="renderInvisible">
+  <div id="digit_0_0_perimeter" class="digitPerimeter">
+    <div id="DGIP_0_0" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece0 pieceDefault"></div>
+    	<div class="piece2 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece4 pieceDefault"></div>
+    	<div class="piece6 pieceDefault"></div>
+    </div>
+  </div>
+  <div id="digit_0_1_perimeter" class="digitPerimeter">
+    <div id="DGIP_0_1" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece0 pieceDefault"></div>
+    	<div class="piece2 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece5 pieceDefault"></div>
+    	<div class="piece6 pieceDefault"></div>
+    </div>
+  </div>
+  <div id="digit_0_2_perimeter" class="digitPerimeter">
+    <div id="DGIP_0_2" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece1 pieceDefault"></div>
+    	<div class="piece2 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece5 pieceDefault"></div>
+    </div>
+  </div>
+  <div id="digit_1_0_perimeter" class="digitPerimeter">
+    <div id="DGIP_1_0" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece0 pieceDefault"></div>
+    	<div class="piece1 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece5 pieceDefault"></div>
+    	<div class="piece6 pieceDefault"></div>
+    </div>
+  </div>
+  <div id="digit_1_1_perimeter" class="digitPerimeter">
+    <div id="DGIP_1_1" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece0 pieceDefault"></div>
+    	<div class="piece1 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece4 pieceDefault"></div>
+    	<div class="piece5 pieceDefault"></div>
+    	<div class="piece6 pieceDefault"></div>
+    </div>
+  </div>
+  <div id="digit_1_2_perimeter" class="digitPerimeter">
+    <div id="DGIP_1_2" class="innerPerimeter innerPerimeterDefault">
+    	<div class="piece0 pieceDefault"></div>
+    	<div class="piece1 pieceDefault"></div>
+    	<div class="piece2 pieceDefault"></div>
+    	<div class="piece3 pieceDefault"></div>
+    	<div class="piece5 pieceDefault"></div>
+    	<div class="piece6 pieceDefault"></div>
+    </div>
+  </div>
+</div>
+
+
+<div id="tallyBoard" class="renderInvisible">
+  <span id="turnCountLabel">Turn Count</span>
+  <p id="TCField"></p>
+  <button id="resetButton" type="button" class="" onclick="resetMC()" ontouchstart="resetT()"></button>
+  <span id="GOLabel" class="renderInvisible">GAME OVER!!!</span>
+  <span id="RLabel" class="renderInvisible">Resetting…</span>
+  <p id="TBGO_smiley" class="renderInvisible">&#128578;</p>
+</div>
+
+<div id="keepGoingDialogueNFM" class="renderInvisible">
+  <span id="KGD_MSGNFM">Partially matched!!!</span>
+  <p id="KGD_smileyNFM">&#128578;</p>
+</div>
+
+<div id="keepGoingDialogueNM" class="renderInvisible">
+  <span id="KGD_MSGNM">Keep going!!!</span>
+  <p id="KGD_smileyNM">&#128578;</p>
+</div>
+
+<div id="gameOverDialogue" class="renderInvisible">
+  <span id="GOMSG"></span>
+  <p id="GO_smiley1">&#128578;</p>
+  <p id="GO_smiley2">&#128578;</p>
+  <p id="GO_smiley3">&#128578;</p>
+</div>
+
+
+</body>
+<script src="234569_main.js"></script>
+<script src="np_utilities.js"></script>
+</html>

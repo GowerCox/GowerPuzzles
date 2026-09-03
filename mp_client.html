@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Home Page">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="mp_client.css">
+<title>Welcome</title>
+</head>
+<body>
+
+<div id="mainContainer">
+
+  <div id="headerPortion">
+    <p id="MCHP_MSG">WELCOME TO<br>GOWER'S PUZZLES!!!</p>
+  </div>
+  <div id="puzzleList">
+  
+  	<button type="button" id="playWEG"
+	onclick="openPuzzle('WEGClient.html')">World's easiest game!</button>
+  
+  	<button type="button" id="play234560"
+	onclick="openPuzzle('234569_main.html')">234569</button>
+  
+  	<button type="button" id="playNaturesPyramid"
+	onclick="openPuzzle('np_client.html')">Nature's Pyramid</button>
+	
+  </div>
+
+</div>
+
+
+<span id="closeX" onclick="closePuzzle()">&times;</span>
+
+<div id="gameContainer">
+	<iframe id="gameFrame" title="Description of content"></iframe>
+</div>
+	
+</body>
+<script src="mp_client.js"></script>
+</html>

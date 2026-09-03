@@ -1,0 +1,725 @@
+@charset "UTF-8";
+
+:root {
+  --basis: 24px;
+  --wholeGridSide: calc(var(--basis)*20);
+  --squareWidth: calc(var(--wholeGridSide)*0.1667);
+  --squareHeight: var(--squareWidth);
+  --fontSize: calc(var(--basis)*1.0);
+}
+
+.renderInvisible {
+  visibility: hidden;
+}
+
+#welcomeScreen {
+  position: absolute;
+  z-index: 2;
+  width: var(--wholeGridSide);
+  height: calc(var(--wholeGridSide)*1.2);
+  background-color: aqua;
+}
+
+#welcomeScreenSpan {
+  position: absolute;
+  color: white;
+  font-size: calc(var(--basis)*0.81);
+  font-family: "Times New Roman", Georgia, serif;
+  background-image: radial-gradient(circle, MidnightBlue, DarkGreen);
+  left: 8%;
+  top: 5%;
+  height: 82%;
+  width:  84%;
+  border: calc(var(--basis)*0.20833) solid Chartreuse;
+  border-radius: 12%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 5% 5% 5% 5%;
+}
+
+#playButton {
+  position: absolute;
+  background-color: grey;
+  padding: 2% 2%;
+  top: 88.5%;
+  left: 38%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+/* ***************************** */
+#segmentGrid, #rowOverlayGrid, #columnOverlayGrid {
+  position: absolute;
+  top: calc(var(--basis)*1.7);
+  left: calc(var(--basis)*2.2);
+}
+
+.squarePerimeter {
+  position: absolute;
+  width: var(--squareWidth);
+  height: var(--squareHeight);
+  background-color: black;
+  border: calc(var(--basis)*0.1) solid DarkCyan;
+  box-sizing: border-box;
+}
+
+#square_0_0_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#square_0_1_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#square_0_2_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+#square_1_0_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#square_1_1_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#square_1_2_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+#square_2_0_perimeter {
+	top: calc(var(--squareWidth)*2.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#square_2_1_perimeter {
+	top: calc(var(--squareWidth)*2.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#square_2_2_perimeter {
+	top: calc(var(--squareWidth)*2.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+#square_3_0_perimeter {
+	top: calc(var(--squareWidth)*3.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#square_3_1_perimeter {
+	top: calc(var(--squareWidth)*3.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#square_3_2_perimeter {
+	top: calc(var(--squareWidth)*3.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+.innerPerimeterDefault {
+	background-color: black;
+}
+.innerPerimeterGreenYellow {
+	background-color: GreenYellow;
+}
+.innerPerimeterDeepPink {
+	background-color: DeepPink;
+}
+.innerPerimeterDarkTurquoise {
+	background-color: DarkTurquoise;
+}
+.innerPerimeterWhite {
+	background-color: white;
+}
+.innerPerimeterEnhance {
+	transform: scale(1.1) skewX(-5deg);
+}
+.innerPerimeter {
+	position: absolute;
+	top: 10%;
+	left: 10%;
+	height: 80%;
+	width: 80%;
+	transform: skewX(-5deg);
+}
+
+.rowPos0 {
+	top: calc(var(--squareHeight)*0.0);
+}
+.rowPos1 {
+	top: calc(var(--squareHeight)*1.0);
+}
+.rowPos2 {
+	top: calc(var(--squareHeight)*2.0);
+}
+.rowPos3 {
+	top: calc(var(--squareHeight)*3.0);
+}
+
+#OGenericRow {
+	position: absolute;
+	left: calc(var(--squareWidth)*-1.0);
+	width: calc(var(--squareWidth)*5.0);
+	height: var(--squareHeight);
+	clip-path: polygon( var(--squareWidth) 0%, calc(var(--squareWidth)*4.0) 0%, calc(var(--squareWidth)*4.0) var(--squareHeight), var(--squareWidth) var(--squareHeight) );
+	z-index: 2;
+}
+
+#rowSlider {
+	position: absolute;
+	left: 0%;
+}
+
+#squareOGR_leftee_perimeter {
+	top: 0%;
+	left: calc(var(--squareWidth)*0.0);
+}
+#squareOGR_0_perimeter {
+	top: 0%;
+	left: calc(var(--squareWidth)*1.1);
+}
+#squareOGR_1_perimeter {
+	top: 0%;
+	left: calc(var(--squareWidth)*2.2);
+}
+#squareOGR_2_perimeter {
+	top: 0%;
+	left: calc(var(--squareWidth)*3.3);
+}
+#squareOGR_rightee_perimeter {
+	top: 0%;
+	left: calc(var(--squareWidth)*4.4);
+}
+
+.add_rowSlideToLeft {
+	animation: rowSlideToLeft 1.5s;
+ }
+@keyframes rowSlideToLeft {
+  from { left: -2%; }
+  to { left: -24%; }
+}
+
+.add_rowSlideToRight {
+	animation: rowSlideToRight 1.5s;
+ }
+@keyframes rowSlideToRight {
+  from { left: 0%; }
+  to { left: 20%; }
+}
+
+
+.columnPos0 {
+	left: calc(var(--squareWidth)*0.0);
+}
+.columnPos1 {
+	left: calc(var(--squareWidth)*1.1);
+}
+.columnPos2 {
+	left: calc(var(--squareWidth)*2.2);
+}
+
+
+#OGenericColumn {
+	position: absolute;
+	top: calc(var(--squareHeight)*-1.0);
+	height: calc(var(--squareHeight)*6.0);
+	width: var(--squareWidth);
+	clip-path: polygon( 0% var(--squareHeight), var(--squareWidth) var(--squareHeight), var(--squareWidth) calc(var(--squareHeight)*5.0), 0% calc(var(--squareHeight)*5.0) );
+	z-index: 2;
+}
+
+#columnSlider {
+	position: absolute;
+	top: 0%;
+}
+
+#columnOGC_uppee_perimeter {
+	top: calc(var(--squareHeight)*0.0);
+	left: 0%;
+}
+#columnOGC_0_perimeter {
+	top: calc(var(--squareHeight)*1.0);
+	left: 0%;
+}
+#columnOGC_1_perimeter {
+	top: calc(var(--squareHeight)*2.0);
+	left: 0%;
+}
+#columnOGC_2_perimeter {
+	top: calc(var(--squareHeight)*3.0);
+	left: 0%;
+}
+#columnOGC_3_perimeter {
+	top: calc(var(--squareHeight)*4.0);
+	left: 0%;
+}
+#columnOGC_downee_perimeter {
+	top: calc(var(--squareHeight)*5.0);
+	left: 0%;
+}
+
+.add_columnSlideUpward {
+	animation: columnSlideUpward 1.5s;
+ }
+@keyframes columnSlideUpward {
+  from { top: 0%; }
+  to { top: -16.667%; }
+}
+
+.add_columnSlideDownward {
+	animation: columnSlideDownward 1.5s;
+ }
+@keyframes columnSlideDownward {
+  from { top: 0%; }
+  to { top: 16.667%; }
+}
+
+/* ***************************** */
+#arrowContainer {
+  position: absolute;
+  background-color: Beige;
+  top: 0;
+  left: 0;
+  width: calc(var(--squareWidth)*4.5);
+  height: calc(var(--squareWidth)*7.4);
+}
+#leftUndercolor {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, red 50%, white 100%);
+  top: 0;
+  left: 17%;
+  width: 18%;
+  height: 100%;
+  opacity: 0.5;
+}
+#midUndercolor {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, blue 50%, white 100%);
+  top: 0;
+  left: 41%;
+  width: 17%;
+  height: 100%;
+  opacity: 0.5;
+}
+#rightUndercolor {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, orange 50%, white 100%);
+  top: 0;
+  left: 65%;
+  width: 17%;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.arrowTop {
+  position: absolute;
+  background-color: black;
+  top: 1%;
+  width: calc(var(--squareWidth)*0.4);
+  height: calc(var(--squareWidth)*0.4);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  cursor: pointer;
+  z-index: 2;
+}
+.arrowTop:disabled, .arrowRight:disabled, .arrowLeft:disabled, .arrowBottom:disabled {
+  background-color: grey;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+#arrowTop_0, #arrowBottom_0 {
+  left: 21%;
+}
+#arrowTop_1, #arrowBottom_1 {
+  left: 45%;
+}
+#arrowTop_2, #arrowBottom_2 {
+  left: 69%;
+}
+
+.arrowRight {
+  position: absolute;
+  background-color: black;
+  left: 88%;
+  width: calc(var(--squareWidth)*0.4);
+  height: calc(var(--squareWidth)*0.4);
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
+  cursor: pointer;
+  z-index: 2;
+}
+#arrowRight_0, #arrowLeft_0 {
+  top: 11%;
+}
+#arrowRight_1, #arrowLeft_1 {
+  top: 24%;
+}
+#arrowRight_2, #arrowLeft_2 {
+  top: 38%;
+}
+#arrowRight_3, #arrowLeft_3 {
+  top: 51%;
+}
+
+.arrowLeft {
+  position: absolute;
+  background-color: black;
+  left: 4%;
+  width: calc(var(--squareWidth)*0.4);
+  height: calc(var(--squareWidth)*0.4);
+  clip-path: polygon(100% 0%, 0 50%, 100% 100%);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.arrowBottom {
+  position: absolute;
+  background-color: black;
+  top: 62%;
+  width: calc(var(--squareWidth)*0.4);
+  height: calc(var(--squareWidth)*0.4);
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  cursor: pointer;
+  z-index: 2;
+}
+
+/* ***************************** */
+.digitGrid_NotOnSmartphone {
+  position: absolute;
+  top: calc(var(--squareWidth)*5.4);
+  left: calc(var(--basis)*2.2);
+}
+.digitGrid_OnSmartphone {
+  position: absolute;
+  top: calc(var(--squareWidth)*4.9);
+  left: calc(var(--basis)*2.2);
+}
+.digitPerimeter {
+  position: absolute;
+  width: var(--squareWidth);
+  height: var(--squareHeight);
+  background-color: black;
+  border: calc(var(--basis)*0.1) solid DarkCyan;
+  box-sizing: border-box;
+}
+
+#digit_0_0_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#digit_0_1_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#digit_0_2_perimeter {
+	top: calc(var(--squareWidth)*0.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+#digit_1_0_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*0.0);
+}
+#digit_1_1_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*1.1);
+}
+#digit_1_2_perimeter {
+	top: calc(var(--squareWidth)*1.0);
+	left: calc(var(--squareWidth)*2.2);
+}
+
+
+#nonArrowContainer {
+  position: absolute;
+  background-color: Beige;
+  top: 0;
+  left: 0;
+  width: calc(var(--squareWidth)*4.5);
+  height: calc(var(--squareWidth)*7.4);
+}
+#leftUndercolor_na {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, red 50%, white 100%);
+  top: 55%;
+  left: 17%;
+  width: 18%;
+  height: 30%;
+  opacity: 0.5;
+}
+#midUndercolor_na {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, blue 50%, white 100%);
+  top: 55%;
+  left: 41%;
+  width: 17%;
+  height: 30%;
+  opacity: 0.5;
+}
+#rightUndercolor_na {
+  position: absolute;
+  background: linear-gradient(to right, white 0%, orange 50%, white 100%);
+  top:55%;
+  left: 65%;
+  width: 17%;
+  height: 30%;
+  opacity: 0.5;
+}
+
+/* ***************************** */
+.tallyBoard_NotOnSmartphone {
+  position: absolute;
+  width: calc(var(--squareWidth)*4.5);
+  height: calc(var(--wholeGridSide)*0.15);
+  top: calc(var(--squareWidth)*7.5);
+  background-color: yellow;
+  border: calc(var(--fontSize)*0.08333) solid black;
+}
+.tallyBoard_OnSmartphone {
+  position: absolute;
+  width: calc(var(--squareWidth)*4.5);
+  height: calc(var(--wholeGridSide)*0.15);
+  top: calc(var(--squareWidth)*7.0);
+  background-color: yellow;
+  border: calc(var(--fontSize)*0.08333) solid black;
+}
+#turnCountLabel {
+  position: absolute;
+  top: -2%;
+  left: 5%;
+  width: 19%;
+  height: 85%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#TCField {
+  position: absolute;
+  top: -25%;
+  left: 26%;
+  height: 35%;
+  width: 20%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: calc(var(--fontSize)*0.08333) solid black;
+  background-color: white;
+}
+#resetButton {
+  position: absolute;
+  background-color: darkblue;
+  color: white;
+  top: 2%;
+  left: 54%;
+  height: 50%;
+  width: 30%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  cursor: pointer;
+}
+#resetButton:disabled {
+  background-color: grey;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+#GOLabel, #RLabel {
+  position: absolute;
+  top: 56%;
+  left: 26%;
+  width: 50%;
+  height: 85%;
+  font-size: var(--fontSize);
+  font-family: "Times New Roman", Georgia, serif;
+  color: blue;
+}
+#TBGO_smiley {
+  position: absolute;
+  top: 24%;
+  left: 75%;
+  font-size: var(--fontSize);
+}
+
+/* ***************************** */
+.pieceDefault {
+  background-color: yellow;
+}
+.pieceRed {
+  background-color: red;
+}
+.pieceWhite {
+  background-color: white;
+}
+.piecePurple {
+  background-color: purple;
+}
+.pieceBlack {
+  background-color: black;
+}
+.piece0 {
+  position: absolute;
+  top: 0%;
+  left: 6%;
+  height: 100%;
+  width: 88%;
+  clip-path: polygon( 0% 0%, 100% 0%, 80% 10%, 15% 10% );
+  border-radius: 21% 21% 0 0;
+}
+.piece1 {
+  position: absolute;
+  top: 0%;
+  left: 7%;
+  height: 100%;
+  width: 100%;
+  clip-path: polygon( 0% 3%, 10% 12%, 10% 37.5%, 0% 47.5% );
+  border-radius: 18% 0 0 0;
+}
+.piece2 {
+  position: absolute;
+  top: 0%;
+  right: 11%;
+  height: 100%;
+  width: 100%;
+  clip-path: polygon( 90% 12%, 100% 5%, 100% 47.5%, 90% 37.5% );
+  border-radius: 0 11% 0 0;
+}
+.piece3 {
+  position: absolute;
+  top: 0%;
+  left: 9%;
+  height: 100%;
+  width: 78%;
+  clip-path: polygon(11% 41%, 89% 41%, 100% 47.5%, 89% 53%, 11% 53%, 0% 47.5%);
+}
+.piece4 {
+  position: absolute;
+  top: 0%;
+  left: 7%;
+  height: 100%;
+  width: 100%;
+  clip-path: polygon(0 47.5%, 10% 57.5%, 10% 85%, 0 97%);
+  border-radius: 0 0 0 18%;
+}
+.piece5 {
+  position: absolute;
+  top: 0%;
+  right: 11%;
+  height: 100%;
+  width: 100%;
+  clip-path: polygon( 90% 57.5%, 100% 47.5%, 100% 97%, 90% 85%);
+  border-radius: 0 0 18% 0;
+}
+.piece6 {
+  position: absolute;
+  top: 0%;
+  left: 6%;
+  height: 100%;
+  width: 88%;
+  clip-path: polygon( 14% 86%, 81% 86%, 91% 96%, 4% 96%);
+  border-radius: 0 0 32% 21%;
+}
+
+/* ***************************** */
+#keepGoingDialogueNFM {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--wholeGridSide)*0.25);
+  left: calc(var(--wholeGridSide)*0.12);
+  width: calc(var(--wholeGridSide)*0.6);
+  height: calc(var(--wholeGridSide)*0.3);
+  background-color: blue;
+}
+#KGD_MSGNFM {
+  position: absolute;
+  color: white;
+  font-size: calc(var(--basis)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  top: 20%;
+  left: 9%;
+}
+#KGD_smileyNFM {
+  position: absolute;
+  top: 4%;
+  left: 45%;
+  font-size: calc(var(--basis)*2.3);
+}
+#keepGoingDialogueNM {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--wholeGridSide)*0.25);
+  left: calc(var(--wholeGridSide)*0.12);
+  width: calc(var(--wholeGridSide)*0.55);
+  height: calc(var(--wholeGridSide)*0.3);
+  background-color: green;
+}
+#KGD_MSGNM {
+  position: absolute;
+  color: white;
+  font-size: calc(var(--basis)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  top: 20%;
+  left: 20%;
+}
+#KGD_smileyNM {
+  position: absolute;
+  top: 11%;
+  left: 41%;
+  font-size: calc(var(--basis)*2.3);
+}
+#gameOverDialogue {
+  position: absolute;
+  z-index: 3;
+  top: calc(var(--wholeGridSide)*0.25);
+  left: calc(var(--wholeGridSide)*0.12);
+  width: calc(var(--wholeGridSide)*0.6);
+  height: calc(var(--wholeGridSide)*0.3);
+  background-color: Sienna;
+}
+#GOMSG {
+  position: absolute;
+  color: white;
+  font-size: calc(var(--basis)*1.3);
+  font-family: "Times New Roman", Georgia, serif;
+  top: 0%;
+  left: 22%;
+}
+#GO_smiley1 {
+  position: absolute;
+  top: 11%;
+  left: 13%;
+  font-size: calc(var(--basis)*2.3);
+}
+#GO_smiley2 {
+  position: absolute;
+  top: 11%;
+  left: 38%;
+  font-size: calc(var(--basis)*2.3);
+}
+#GO_smiley3 {
+  position: absolute;
+  top: 11%;
+  left: 62%;
+  font-size: calc(var(--basis)*2.3);
+}
+
+/*
+@media screen and (max-width: 480px) {
+	
+	#digitGrid {
+	  position: absolute;
+	  top: calc(var(--squareWidth)*4.9);
+	  left: calc(var(--basis)*2.2);
+	}
+	
+	#tallyBoard {
+	  position: absolute;
+	  width: calc(var(--squareWidth)*4.5);
+	  height: calc(var(--wholeGridSide)*0.15);
+	  top: calc(var(--squareWidth)*7.0);
+	  background-color: yellow;
+	  border: calc(var(--fontSize)*0.08333) solid black;
+	}
+}
+*/
+
+
+
+
+
+
+
