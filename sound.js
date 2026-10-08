@@ -141,8 +141,6 @@ function playChimeDriver( whichChime ) {
 
 	
 function playWarble( frequency, duration, warblesPerSecond ) {
-
-	alert("Playing warble");
 	
 	if ( mainAudioContext === undefined ) {
 		logger("Creating mainAudioContext");
