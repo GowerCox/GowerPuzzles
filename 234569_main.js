@@ -340,6 +340,8 @@ function enactPlayCallbackT() {
 /* **************************************** */
 function setUpPlayBoard() {
 	
+	playChimeDriver( "chime234569Play" )
+	
 	document.getElementById( "welcomeScreen" ).classList.add( "renderInvisible" );
 	document.getElementById( "segmentGrid" ).classList.remove( "renderInvisible" );
 	
@@ -370,6 +372,8 @@ function arrowCallbackMC( whichArrow ) {
 }
 
 function enactArrow( WAID ) {
+	
+	playWarble( 440, 2, 5 );
 	
 	disableAllArrows();
 	document.getElementById( "resetButton" ).disabled = true;
@@ -769,6 +773,8 @@ function resetT() {
 }
 
 function resetBoardl() {
+	
+	playChimeDriver( "chime234569Play" )
 	
 	let rl = document.getElementById( "RLabel" ).classList.remove( "renderInvisible");
 	
