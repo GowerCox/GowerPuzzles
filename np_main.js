@@ -229,6 +229,8 @@ function enactPlayT() {
 
 function enactPlay() {
 	
+	playUpDownSequence( 300, 12, 1.16, 0.17 );
+	
 	document.getElementById( "welcomeScreen" ).classList.add( "renderInvisible");
 	document.getElementById( "titleContainer" ).classList.remove( "renderInvisible");
 	document.getElementById( "mainPyramid" ).classList.remove( "renderInvisible");
@@ -455,6 +457,8 @@ function emojiClickT( whichEmoji ) {
 }
 
 function emojiClick( whichEmoji ) {
+	
+	bellEffect( 700 );
 	
 	let regexp = /\d/;
 	let eliminateTrayPosition = parseInt( whichEmoji.id.match(regexp)[0] );
@@ -699,6 +703,7 @@ function gameOver() {
 		[ 150, function() {
 			document.getElementById("TLOption").classList.add( "renderInvisible" );
 			document.getElementById("advanceLevelPopup").classList.remove( "renderInvisible" );
+			NPGameOverSound();
 			}],
 		[ 1800, function() { document.getElementById("advanceLevelPopup").classList.add( "renderInvisible" ); }  ],
 		[ 1850, function() {
@@ -831,6 +836,8 @@ function takeIt() {
 
 function advanceToNextLevel() {
 	
+	playUpDownSequence( 500, 9, 1.16, 0.17 );
+	
 	possibleThrowAwayScore = 0;
 	trayEmojiCount = 8;
 	
@@ -924,6 +931,7 @@ function leaveIt() {
 			unsetEmojiTray();
 			updateScore();
 			trayEmojiCount = 8;
+			playUpDownSequence( 300, 9, 1.16, 0.17 );
 			}],
 		[ 2500, function() {
 			setUpLevel( toUse );
@@ -972,6 +980,8 @@ function resetT() {
 	}
 }
 function reset() {
+	
+	playUpDownSequence( 1300, 16, 0.94, 0.2 );
 	
 	gameState = "resetting"
 	

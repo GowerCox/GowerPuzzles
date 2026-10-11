@@ -11,6 +11,240 @@ var gainNode2;
 var soundOscillator2;
 
 
+
+function NPGameOverSound() {
+
+	let playSequence = [
+	    [ 2, function() { insect(); }],
+	    [ 250, function() { insect(); }],
+	    [ 500, function() { birdCall(); }],
+	    [ 750, function() { birdCall(); }]
+	];
+  	scheduleUtilities.runSequence( playSequence );	
+}
+
+function insect() {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+	let now = mainAudioContext.currentTime;
+
+	let carrierOsc = mainAudioContext.createOscillator();
+    carrierOsc.type = 'sine'; 
+    carrierOsc.frequency.setValueAtTime(4500, now); 
+
+	let mainGain = mainAudioContext.createGain();
+    mainGain.gain.setValueAtTime(0, now);
+
+    carrierOsc.connect(mainGain);
+    mainGain.connect(mainAudioContext.destination);
+
+    let startTime = now + 0.1;
+	let syllableDuration = 0.015;
+	let syllableGap = 0.025;
+
+    for (let i = 0; i < 4; i++) {
+        let pulseStart = startTime + (i * syllableGap);
+        let pulseEnd = pulseStart + syllableDuration;
+
+        mainGain.gain.setValueAtTime(0, pulseStart);
+        mainGain.gain.linearRampToValueAtTime(0.15, pulseStart + 0.003);
+        mainGain.gain.setValueAtTime(0.15, pulseEnd - 0.003);
+        mainGain.gain.linearRampToValueAtTime(0, pulseEnd);
+    }
+
+    carrierOsc.start(now);
+    carrierOsc.stop(startTime + (4 * syllableGap) + 0.05);
+}
+
+/* **************************************** */
+function birdCall() {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+	
+	let osc = mainAudioContext.createOscillator();
+	let gainNode = mainAudioContext.createGain();
+  
+	osc.connect(gainNode);
+	gainNode.connect(mainAudioContext.destination);
+  
+	osc.type = 'sine'; 
+  
+	let now = mainAudioContext.currentTime;
+	let duration = 0.15; 
+  
+	osc.frequency.setValueAtTime(4000, now);
+	osc.frequency.exponentialRampToValueAtTime(1500, now + 0.08);
+	osc.frequency.exponentialRampToValueAtTime(3000, now + duration);
+  
+	gainNode.gain.setValueAtTime(0, now);
+	gainNode.gain.linearRampToValueAtTime(0.3, now + 0.02);
+	gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration); 
+  
+	osc.start(now);
+	osc.stop(now + duration);
+}
+
+/* **************************************** */
+function playUpDownSequence( initF, count, multiplier, interval ) {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+ 	function playToneWhen(freq, startTime, duration) {
+	    const osc = mainAudioContext.createOscillator();
+	    const gain = mainAudioContext.createGain();
+	
+	    osc.type = 'sine';
+	    osc.frequency.setValueAtTime(freq, startTime);
+	
+	    gain.gain.setValueAtTime(0.4, startTime);
+	    
+	    gain.gain.exponentialRampToValueAtTime(0.001, startTime + (duration/2) );
+	
+	    osc.connect(gain);
+	    gain.connect(mainAudioContext.destination);
+	
+	    osc.start(startTime);
+	    osc.stop(startTime + duration);
+	}
+
+	let now = mainAudioContext.currentTime;
+	
+	let deltaT = 0;
+	let currentFrequency = initF;
+	for ( let i=0; i<count; i++ ) {
+		playToneWhen( currentFrequency, now + deltaT, interval);
+		currentFrequency *= multiplier;
+		deltaT += interval;
+	}
+	
+}
+
+/* **************************************** */
+function bellEffect( fundamental ) {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+    
+    let now = mainAudioContext.currentTime;
+
+    let overtones = [
+        { ratio: 1.0,  gain: 0.5,  decay: 2.0 },
+        { ratio: 1.5,  gain: 0.3,  decay: 1.5 },
+        { ratio: 4.0,  gain: 0.2,  decay: 0.8 },
+        { ratio: 6.0,  gain: 0.4,  decay: 0.8 } 
+    ];
+
+	let masterGain = mainAudioContext.createGain();
+    masterGain.gain.setValueAtTime(0.3, now); 
+    masterGain.connect(mainAudioContext.destination);
+
+    overtones.forEach(tone => {
+        let osc = mainAudioContext.createOscillator();
+        let gainNode = mainAudioContext.createGain();
+
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(fundamental * tone.ratio, now);
+
+        gainNode.gain.setValueAtTime(0, now);
+        gainNode.gain.linearRampToValueAtTime(tone.gain, now + 0.01); 
+        gainNode.gain.exponentialRampToValueAtTime(0.0001, now + tone.decay);
+
+        osc.connect(gainNode);
+        gainNode.connect(masterGain);
+
+        osc.start(now);
+        osc.stop(now + tone.decay);
+    });
+}
+
+
+/* **************************************** */
+function playClick( f ) {
+
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+	let oscillator = mainAudioContext.createOscillator();
+	let gainNode = mainAudioContext.createGain();
+  
+	oscillator.type = 'sine'; 
+	oscillator.frequency.setValueAtTime( f, mainAudioContext.currentTime); 
+  
+	let now = mainAudioContext.currentTime;
+	gainNode.gain.setValueAtTime(0.5, now);
+	gainNode.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+  
+	oscillator.connect(gainNode);
+	gainNode.connect(mainAudioContext.destination);
+  
+	oscillator.start(now);
+	oscillator.stop(now + 0.05);
+}
+
+
+/* **************************************** */
+function playSwoosh() {
+
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+	if (mainAudioContext.state === 'suspended') {
+		mainAudioContext.resume();
+	}
+
+	let duration = 0.4;
+	let now = mainAudioContext.currentTime;
+
+	let bufferSize = mainAudioContext.sampleRate * duration;
+	let buffer = mainAudioContext.createBuffer(1, bufferSize, mainAudioContext.sampleRate); //
+	let data = buffer.getChannelData(0); //
+  
+	for (let i = 0; i < bufferSize; i++) {
+		data[i] = Math.random() * 2 - 1;
+	}
+
+	let noiseSource = mainAudioContext.createBufferSource();
+	noiseSource.buffer = buffer;
+
+	let filter = mainAudioContext.createBiquadFilter();
+	filter.type = 'bandpass';
+	filter.Q.value = 4.0;
+
+	let gainNode = mainAudioContext.createGain();
+
+	filter.frequency.setValueAtTime(200, now);
+	filter.frequency.exponentialRampToValueAtTime(1800, now + (duration * 0.4));
+	filter.frequency.exponentialRampToValueAtTime(300, now + duration);
+
+	gainNode.gain.setValueAtTime(0, now);
+	gainNode.gain.linearRampToValueAtTime(0.7, now + (duration * 0.3));
+	gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
+
+	noiseSource.connect(filter);
+	filter.connect(gainNode);
+	gainNode.connect(mainAudioContext.destination);
+
+	noiseSource.start(now);
+	noiseSource.stop(now + duration);
+}
+
+
 /* **************************************** */
 function playSingleNote( note, pDuration ) {
 	
@@ -49,26 +283,21 @@ function playSingleNote( note, pDuration ) {
 	soundOscillator.connect(gainNode);
 	gainNode.connect(mainAudioContext.destination);
 	let startTime = mainAudioContext.currentTime;
-	//let fadeInDuration = duration/10;
+
 	let fadeInDuration = duration*0.4;
 	
-	// 3. Schedule the volume (Gain) envelope
-	//  VERY IMPORTANT NOTICE - do not use the value of 0.0 for zero volume, use 0.0001 instead
     gainNode.gain.setValueAtTime( 0.0001 , startTime );
 	gainNode.gain.exponentialRampToValueAtTime( 1.0, startTime+fadeInDuration);
 	
 	
 	//startFadeTime = duration*0.9;
 	startFadeTime = duration*0.6;
-	// Maintain full volume until the fade starts
 	gainNode.gain.setValueAtTime( 1.0, startFadeTime );
 	
-	// Exponentially ramp down to almost 0 (exponentialRamp cannot end at exactly 0)
 	gainNode.gain.exponentialRampToValueAtTime(0.0001, duration);
 	
-	// 4. Start and stop the oscillator
 	soundOscillator.type = 'sine';
-	soundOscillator.frequency.setValueAtTime( frequency, startTime); // A4 note
+	soundOscillator.frequency.setValueAtTime( frequency, startTime);
 
 	soundOscillator.start(startTime);
 	soundOscillator.stop(duration);
@@ -99,6 +328,16 @@ function setUpChimeSequences() {
 	
 	let chime234569Play = [  ["A2", "eighth"], ["F1", "eighth"], ["D1", "eighth"], ["F1", "eighth"], ["A2", "eighth"], ["F1", "eighth"] ];
 	chimeSequences.set("chime234569Play", chime234569Play);
+	
+	let npMove = [  ["A2", "eighth"], ["C#2", "eighth"], ["E2", "eighth"] ];
+	chimeSequences.set("npMove", npMove);
+	
+	let naturesPyramidPlay = [  ["G1", "eighth"], ["A2", "eighth"], ["C2", "eighth"], ["E2", "eighth"], ["G1", "eighth"], ["A2", "eighth"], ["C2", "eighth"], ["E2", "eighth"]];
+	chimeSequences.set("naturesPyramidPlay", naturesPyramidPlay);
+	
+	let npGameWin = [  ["G2", "quarter"], ["G2", "eighth"], ["G2", "eighth"], ["C3", "whole"] ];
+	chimeSequences.set("npGameWin", npGameWin );
+	
 
 }
 
