@@ -921,6 +921,7 @@ function gameOverSequence( matchElements ) {
 	t = 120;
 	let GO_Dialogue = document.getElementById( "gameOverDialogue" );
 	let f_flashGO = function () {
+		playChimeDriver( "gameWin_234569" );
 		GO_Dialogue.classList.remove( "renderInvisible");
 		let TCWord = "turns";
 		if (turnCount == 1) {TCWord = "turn";}
@@ -953,6 +954,8 @@ function gameOverSequence( matchElements ) {
 	matchElements.forEach((currentValue) => {
 	
 		let f_firstTrioVisible = function () {
+			
+				playChimeDriver( "trioHighlight_234569" );
 			
 				currentIPID = `IP_${currentValue[1][0]}_${currentValue[0]}`;
 				logger("currentIPID: " + currentIPID);
@@ -1023,6 +1026,8 @@ function gameOverSequence( matchElements ) {
 			t += 500;
 	
 		let f_secondTrioVisible = function () {
+			
+				playChimeDriver( "trioHighlight_234569_Reverse" );
 			
 				currentIPID = `IP_${currentValue[3][0]}_${currentValue[0]}`;
 				logger("currentIPID: " + currentIPID);

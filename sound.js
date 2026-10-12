@@ -411,6 +411,15 @@ function setUpChimeSequences() {
 	let npGameWin = [  ["G2", "quarter"], ["G2", "eighth"], ["G2", "eighth"], ["C3", "whole"] ];
 	chimeSequences.set("npGameWin", npGameWin );
 	
+	let gameWin_234569 = [  ["G2", "eighth"], ["G2", "eighth"], ["G2", "eighth"], ["E3", "eighth"], ["E3", "eighth"], ["E3", "eighth"] ];
+	chimeSequences.set("gameWin_234569", gameWin_234569 );
+	
+	let trioHighlight_234569 = [  ["A3", "eighth"], ["F2", "eighth"], ["A2", "eighth"] ];
+	chimeSequences.set("trioHighlight_234569", trioHighlight_234569 );
+	
+	let trioHighlight_234569_Reverse = [  ["A2", "eighth"], ["F2", "eighth"], ["A3", "eighth"] ];
+	chimeSequences.set("trioHighlight_234569_Reverse", trioHighlight_234569_Reverse );
+	
 
 }
 
