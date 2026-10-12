@@ -111,7 +111,8 @@ function temporaryPopup() {
 	let guessFieldElement = document.getElementById('guessField');
 	
 	let sequenceItself = [
-	    [ 3, function() { 
+	    [ 3, function() {
+			honkHonk();
 			pe.classList.remove( "renderInvisible" );
 			guessFieldElement.disabled = true;
 			 } ],
@@ -143,6 +144,7 @@ function analyseGuess() {
 /* **************************************** */
 function gotIt(randomValue) {
 
+	circusSlide();
 	let msg = `"${randomValue}" IS CORRECT!!!<br>Want to try again?`;
 	document.getElementById( "PPCALabel" ).innerHTML = msg;
 	document.getElementById( "playPortion" ).classList.add( "renderInvisible" );
@@ -152,6 +154,8 @@ function gotIt(randomValue) {
 	
 /* **************************************** */
 function dontGotIt(userValue) {
+	
+	honkHonk();
 	
 	incorrectCount++;
  	

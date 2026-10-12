@@ -12,6 +12,79 @@ var soundOscillator2;
 
 
 
+function honkHonk() {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+	
+	let now = mainAudioContext.currentTime;
+    
+    let singleHonk = (startTime) => {
+		let frequencyGenerator = mainAudioContext.createOscillator();
+		let volumeControl = mainAudioContext.createGain();
+		let filter = mainAudioContext.createBiquadFilter();
+        
+        frequencyGenerator.type = 'sawtooth';
+        
+        frequencyGenerator.frequency.setValueAtTime(580, startTime);
+        
+        filter.type = 'bandpass';
+        filter.frequency.setValueAtTime(800, startTime);
+        
+        volumeControl.gain.setValueAtTime(0, startTime);
+        volumeControl.gain.linearRampToValueAtTime(0.75, startTime + 0.03);
+        volumeControl.gain.exponentialRampToValueAtTime(0.001, startTime + 0.15);
+        
+        frequencyGenerator.connect(filter);
+        filter.connect(volumeControl);
+        volumeControl.connect(mainAudioContext.destination);
+        
+        frequencyGenerator.start(startTime);
+        frequencyGenerator.stop(startTime + 0.16);
+    };
+
+    singleHonk(now);
+    singleHonk(now + 0.18);
+}
+
+
+
+function circusSlide() {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+	
+	let now = mainAudioContext.currentTime;
+	let duration = 0.6;
+    
+	let frequencyGenerator = mainAudioContext.createOscillator();
+	let volumeControl = mainAudioContext.createGain();
+    
+    frequencyGenerator.type = 'sine';
+
+    frequencyGenerator.frequency.setValueAtTime( 600, now );
+    //frequencyGenerator.frequency.exponentialRampToValueAtTime( 1200, now + duration * 0.8);
+    frequencyGenerator.frequency.linearRampToValueAtTime(1200, now + duration * 0.8);
+    
+    volumeControl.gain.setValueAtTime(0, now);
+    volumeControl.gain.linearRampToValueAtTime(0.5, now + 0.01);
+    volumeControl.gain.linearRampToValueAtTime(0.5, now + duration - 0.1);
+    volumeControl.gain.linearRampToValueAtTime(0.001, now + duration );
+
+    frequencyGenerator.connect(volumeControl);
+    volumeControl.connect(mainAudioContext.destination);
+    
+    frequencyGenerator.start(now);
+    frequencyGenerator.stop(now + duration);
+}
+
+
+
+
 function NPGameOverSound() {
 
 	let playSequence = [
