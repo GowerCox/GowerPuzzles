@@ -458,8 +458,6 @@ function emojiClickT( whichEmoji ) {
 
 function emojiClick( whichEmoji ) {
 	
-	bellEffect( 700 );
-	
 	let regexp = /\d/;
 	let eliminateTrayPosition = parseInt( whichEmoji.id.match(regexp)[0] );
 	
@@ -470,6 +468,8 @@ function emojiClick( whichEmoji ) {
 	document.getElementById("reButton").disabled = true;
 
 	if ( gameState == "readyForUserClick" ) {
+	
+		bellEffect( 700 );
 		
 		gameState = "processingUserClick";
 		
