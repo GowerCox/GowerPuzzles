@@ -1,4 +1,3 @@
-var loggerOn;
 var audioController;
 var noteFrequenctMap;
 var mainAudioContext;
@@ -9,6 +8,61 @@ var chimeSequences;
 var audioController2;
 var gainNode2;
 var soundOscillator2;
+
+let audioCtx = null;
+let isAlarmPlaying = false;
+let alarmInterval = null;
+
+
+
+let DTMFTones = {
+  '1': [697, 1209], '2': [697, 1336], '3': [697, 1477],
+  '4': [770, 1209], '5': [770, 1336], '6': [770, 1477],
+  '7': [852, 1209], '8': [852, 1336], '9': [852, 1477],
+  '*': [941, 1209], '0': [941, 1336], '#': [941, 1477]
+};
+function playDTMF( button ) {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+	
+	let duration = 0.5;
+	let lowFrequency = DTMFTones[button][0];
+	let highFrequency = DTMFTones[button][1];
+	
+	/* Need two oscillators */
+	let lowOscillator = mainAudioContext.createOscillator();
+	let highOscillator = mainAudioContext.createOscillator();
+	lowOscillator.frequency.value = lowFrequency;
+	highOscillator.frequency.value = highFrequency;
+
+	/* Smoothing functions */
+	let startTime = mainAudioContext.currentTime;
+	let volumeControl = mainAudioContext.createGain();
+	volumeControl.gain.setValueAtTime(0.5, startTime);
+	volumeControl.gain.linearRampToValueAtTime(0.75, startTime + 0.03);
+	volumeControl.gain.linearRampToValueAtTime(0.75, startTime + (duration-0.03));
+	volumeControl.gain.linearRampToValueAtTime(0.01, startTime + duration);
+  
+	lowOscillator.connect(volumeControl);
+	highOscillator.connect(volumeControl);
+	volumeControl.connect(mainAudioContext.destination);
+	
+	let stopTime = startTime + duration;
+
+	lowOscillator.start(startTime);
+	highOscillator.start(startTime);
+
+	lowOscillator.stop(stopTime);
+	highOscillator.stop(stopTime);
+	
+	//highOscillator.onended = () => {
+	//	mainAudioContext.close();
+	//};
+}
+
 
 
 
@@ -638,16 +692,11 @@ function DTSetUP2() {
 /* **************************************** */
 document.addEventListener("DOMContentLoaded", (event) => {
 	loggerOn = true;
-	logger( "Gower wuz here" );
+	logger( "Sound.js document.addEventListener" );
 	createNoteFrequencyMap();
 	timingBasis = 1.0;
 	setUpChimeSequences();
 });
-
-/* **************************************** */
-function logger( m ) {
-	if ( loggerOn ) { console.log(m); }
-}
 
 
 /* **************************************** */
