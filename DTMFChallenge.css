@@ -1,0 +1,296 @@
+@charset "UTF-8";
+
+:root {
+	--basis: 420px;
+	--basicWidth: var(--basis);
+	--basicHeight: var(--basis);
+	--tallyBoardTop: calc(var(--basis)*1.05);
+	--tallyBoardWidth: calc(var(--basis)*1.0);
+	--tallyBoardHeight: calc(var(--basis)*0.3);
+}
+
+body {
+  background-color: HoneyDew;
+}
+
+.renderInvisible {
+  visibility: hidden;
+}
+
+/* *********************************** */
+#welcomeScreen {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  background-color: DarkSlateGray;
+  border: 5px solid black;
+}
+
+#welcomeScreenSpan {
+  position: absolute;
+  color: blue;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  background-image: radial-gradient(circle, coral, yellow);
+  left: 3%;
+  top: 3%;
+  height: 95%;
+  width:  94%;
+  border-radius: 12%;
+  text-align: center;
+  border: 5px solid black;
+  box-sizing: border-box;
+  padding: 5% 5% 5% 5%;
+}
+
+/* *********************************** */
+#playBoard {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  background-color: BurlyWood;
+  border: 5px solid black;
+}
+#blockingOverlay {
+  position: absolute;
+  top: 1%;
+  left: 1%;
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+}
+
+.digit {
+  position: absolute;
+  height: 20%;
+  width:  20%;
+  background: radial-gradient(
+    circle at 35% 35%, 
+    white 0%, 
+    blue 40%, 
+    grey 100%
+  );
+  box-shadow: 
+    inset -10px -10px 20px rgba(0, 0, 0, 0.4),
+    15px 15px 30px rgba(0, 0, 0, 0.3),
+    -5px -5px 15px rgba(255, 255, 255, 0.5);
+  color: black;
+  font-size: calc(var(--basis)*0.12);
+  font-family: "Times New Roman", Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.digitDisabled {
+  position: absolute;
+  height: 20%;
+  width:  20%;
+  background: radial-gradient(
+    circle at 35% 35%, 
+    white 0%, 
+    green 40%, 
+    grey 100%
+  );
+  box-shadow: 
+    inset -10px -10px 20px rgba(0, 0, 0, 0.4),
+    15px 15px 30px rgba(0, 0, 0, 0.3),
+    -5px -5px 15px rgba(255, 255, 255, 0.5);
+  color: black;
+  font-size: calc(var(--basis)*0.12);
+  font-family: "Times New Roman", Georgia, serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.digit:active {
+  transform: translateY(4%);
+  box-shadow: 0 5px grey;
+	
+}
+
+
+.position1 {
+  top: 7%;
+  left: 8%;
+}
+.position2 {
+  top: 7%;
+  left: 38%;
+}
+.position3 {
+  top: 7%;
+  left: 68%;
+}
+.position4 {
+  top: 30%;
+  left: 8%;
+}
+.position5 {
+  top: 30%;
+  left: 38%;
+}
+.position6 {
+  top: 30%;
+  left: 68%;
+}
+.position7 {
+  top: 53%;
+  left: 8%;
+}
+.position8 {
+  top: 53%;
+  left: 38%;
+}
+.position9 {
+  top: 53%;
+  left: 68%;
+}
+.position0 {
+  top: 76%;
+  left: 38%;
+}
+
+
+/* *********************************** */
+#tallyBoard {
+  position: absolute;
+  top: var(--tallyBoardTop);
+  left: 1%;
+  width: var(--tallyBoardWidth);
+  height: var(--tallyBoardHeight);
+  background-color: aqua;
+  border: 5px solid black;
+  border-radius: 15%;
+}
+#TBTriesLabel {
+  position: absolute;
+  top: 2%;
+  left: 14%;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  color: black;
+}
+#TBTriesField {
+  position: absolute;
+  top: -15%;
+  left: 33%;
+  height: 21%;
+  width: 12%;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: 2px solid black;
+  background-color: white;
+}
+#reButton {
+  position: absolute;
+  background-color: darkblue;
+  color: white;
+  top: 2%;
+  left: 54%;
+  height: 35%;
+  width: 30%;
+  font-size: calc(var(--basis)*0.05);
+  font-family: "Times New Roman", Georgia, serif;
+  cursor: pointer;
+}
+#reButton:disabled {
+  position: absolute;
+  top: 2%;
+  left: 54%;
+  height: 35%;
+  width: 30%;
+  background-color: grey;
+  color: white;
+  font-size: calc(var(--basis)*0.05);
+  font-family: "Times New Roman", Georgia, serif;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+#playRandomTone {
+  position: absolute;
+  background-color: BlueViolet;
+  color: white;
+  top: 50%;
+  left: 20%;
+  height: 35%;
+  width: 50%;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  border-radius: 15%;
+  cursor: pointer;
+}
+#playRandomTone:disabled {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  height: 35%;
+  width: 50%;
+  background-color: grey;
+  color: white;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+#GOFinalMessage {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  font-size: calc(var(--basis)*0.09);
+  font-family: "Times New Roman", Georgia, serif;
+  color: red;
+}
+
+
+/* *********************************** */
+#redX {
+  position: absolute;
+  font-size: calc(var(--basis)*0.12);
+}
+
+#greenCheckmark {
+  position: absolute;
+  font-size: calc(var(--basis)*0.12);
+}
+
+/* *********************************** */
+#gamOverPopup {
+  position: absolute;
+  top: calc(var(--basis)*0.3);
+  left: calc(var(--basis)*0.2);
+  width: calc(var(--basis)*0.6);
+  height: calc(var(--basis)*0.4);
+  background-color: aqua;
+  border-radius: 8%;
+  border: 2px solid black;
+}
+#GOPMessage {
+  position: absolute;
+  top: 11%;
+  left: 5%;
+  height: 35%;
+  width: 90%;
+  font-size: calc(var(--basis)*0.06);
+  font-family: "Times New Roman", Georgia, serif;
+  text-align: center;
+}
+#GOPSmily {
+  position: absolute;
+  top: 47%;
+  left: 36%;
+  font-size: calc(var(--basis)*0.17);
+}
+
+
+
+
+

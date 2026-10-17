@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Logic puzzle">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="DTMFChallenge.css">
+<title>DTMF CHALLENGE</title>
+</head>
+<body>
+
+<div id="welcomeScreen" class="renderInvisible" 
+	    onclick="closeWelcomeScreenMC()"
+	    ontouchstart="closeWelcomeScreenT()">
+	<span id="welcomeScreenSpan"></span>
+</div>
+
+<div id="playBoard" class="renderInvisible">
+	<div id="digit1" class="position1 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">1</div>
+	<div id="digit2" class="position2 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">2</div>
+	<div id="digit3" class="position3 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">3</div>
+	<div id="digit4" class="position4 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">4</div>
+	<div id="digit5" class="position5 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">5</div>
+	<div id="digit6" class="position6 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">6</div>
+	<div id="digit7" class="position7 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">7</div>
+	<div id="digit8" class="position8 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">8</div>
+	<div id="digit9" class="position9 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">9</div>
+	<div id="digit0" class="position0 digit" onclick="tryToneMC(this)" ontouchstart="tryToneT(this)">0</div>
+	<span id="redX" class="renderInvisible">&#x274C;</span>
+	<span id="greenCheckmark" class="renderInvisible">&#x2705;</span>
+</div>
+
+<div id="tallyBoard" class="renderInvisible">
+	<span id="TBTriesLabel">Tries:</span>
+	<p id="TBTriesField"></p>
+	<button id="reButton" type="button"
+		onclick="resetMC()"
+		ontouchstart="resetT()">RESET</button>
+	<button id="playRandomTone" type="button"
+		onclick="playRandomToneMC()"
+		ontouchstart="playRandomToneT()">Play Tone</button>
+	<span id="GOFinalMessage" class="renderInvisible">Game Over</span>
+</div>
+
+<div id="gamOverPopup" class="renderInvisible">
+	<span id="GOPMessage"></span>
+	<span id="GOPSmily">&#128515;</span>
+</div>
+
+<div id="blockingOverlay" class="renderInvisible">
+</div>
+
+
+
+</body>
+<script src="DTMFChallengeMain.js"></script>
+<script src="sound.js"></script>
+<script src="np_utilities.js"></script>
+</html>

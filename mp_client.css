@@ -73,6 +73,17 @@
   cursor: pointer;
 }
 
+#playDTMFChallenge {
+  position: absolute;
+  background-color: red;
+  padding: 2% 2%;
+  top: 40%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+
 /* ********************************** */
 #gameContainer {
   position: absolute;
