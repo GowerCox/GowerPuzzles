@@ -3,6 +3,7 @@ var noteFrequenctMap;
 var mainAudioContext;
 var timingBasis;
 var chimeSequences;
+var DTMFLevel;
 
 /* test varibles in dev tools */
 var audioController2;
@@ -23,6 +24,8 @@ let DTMFTones = {
 };
 function playDTMF( button ) {
 	
+	let trueLevel = DTMFLevel / 100;
+	
 	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
 		mainAudioContext.close();
 	}
@@ -41,9 +44,10 @@ function playDTMF( button ) {
 	/* Smoothing functions */
 	let startTime = mainAudioContext.currentTime;
 	let volumeControl = mainAudioContext.createGain();
-	volumeControl.gain.setValueAtTime(0.5, startTime);
-	volumeControl.gain.linearRampToValueAtTime(0.75, startTime + 0.03);
-	volumeControl.gain.linearRampToValueAtTime(0.75, startTime + (duration-0.03));
+
+	volumeControl.gain.setValueAtTime( (trueLevel/2), startTime);
+	volumeControl.gain.linearRampToValueAtTime( trueLevel, startTime + 0.03);
+	volumeControl.gain.linearRampToValueAtTime( trueLevel, startTime + (duration-0.03));
 	volumeControl.gain.linearRampToValueAtTime(0.01, startTime + duration);
   
 	lowOscillator.connect(volumeControl);
@@ -696,6 +700,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	createNoteFrequencyMap();
 	timingBasis = 1.0;
 	setUpChimeSequences();
+	DTMFLevel = 60;
 });
 
 

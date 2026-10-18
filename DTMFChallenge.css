@@ -55,6 +55,23 @@ body {
   background-color: BurlyWood;
   border: 5px solid black;
 }
+
+.VScontainer {
+  position: absolute;
+  top: 53%;
+  left: 1%;
+  width: 40%;
+  height: 32%;
+  background-color: Chartreuse;
+}
+
+#volumeSlider {
+  position: absolute;
+  top: 27%;
+  left: 2%;
+  width: 90%;
+}
+
 #blockingOverlay {
   position: absolute;
   top: 1%;
@@ -220,7 +237,7 @@ body {
   background-color: BlueViolet;
   color: white;
   top: 50%;
-  left: 20%;
+  left: 42%;
   height: 35%;
   width: 50%;
   font-size: calc(var(--basis)*0.06);
@@ -231,7 +248,7 @@ body {
 #playRandomTone:disabled {
   position: absolute;
   top: 50%;
-  left: 20%;
+  left: 42%;
   height: 35%;
   width: 50%;
   background-color: grey;

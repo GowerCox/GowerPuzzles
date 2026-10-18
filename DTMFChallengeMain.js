@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 	loggerOn = true;
 	beginning();
 });
-	
+
 /* **************************************** */
 function logger( m ) {
 	if ( loggerOn ) { console.log(m); }
@@ -94,9 +94,11 @@ function initialiseVariables() {
 		
 	}
 	
+	document.getElementById("volumeSlider").oninput = function() {
+	  	DTMFLevel = this.value;
+	}
 	
 }
-
 
 /* **************************************** */
 function playRandomToneMC() {
