@@ -74,10 +74,12 @@ body {
 
 #blockingOverlay {
   position: absolute;
-  top: 1%;
-  left: 1%;
+  top: 2%;
+  left: 2%;
   width: var(--basicWidth);
   height: var(--basicHeight);
+  background-color: white;
+  opacity: 0.38;
 }
 
 .digit {
