@@ -16,6 +16,62 @@ let alarmInterval = null;
 
 
 
+
+
+function doorCreak(duration = 1.5) {
+	
+	if ( !(mainAudioContext === undefined || mainAudioContext.state === 'closed') ) {
+		mainAudioContext.close();
+	}
+	mainAudioContext = new (window.AudioContext || window.webkitAudioContext)();
+    let now = mainAudioContext.currentTime;
+
+    /* Overall volume control */
+    let masterVolume = mainAudioContext.createGain();
+    masterVolume.gain.setValueAtTime(0, now);
+    
+    /* No sudden starts and stops */
+    masterVolume.gain.linearRampToValueAtTime(0.9, now + 0.2);
+    masterVolume.gain.exponentialRampToValueAtTime(0.001, now + duration);
+    masterVolume.connect(mainAudioContext.destination);
+
+    /* Simulator */
+    let creakSimulator = mainAudioContext.createBiquadFilter();
+    creakSimulator.type = 'bandpass';
+    creakSimulator.frequency.setValueAtTime(600, now);
+    creakSimulator.Q.setValueAtTime( 4, now); // Sharpness of the resonance
+    creakSimulator.connect(masterVolume);
+
+    /* Simulator pulses */
+    let timeOffset = 0;
+    let pulseInterval = 0.01;
+
+    while (timeOffset < duration) {
+		
+        let clickTime = now + timeOffset;
+
+        let osc = mainAudioContext.createOscillator();
+        let clickVolume = mainAudioContext.createGain();
+
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime( 800, clickTime);
+        osc.frequency.exponentialRampToValueAtTime(100, clickTime + 0.03);
+
+        clickVolume.gain.setValueAtTime(0.8, clickTime);
+        clickVolume.gain.exponentialRampToValueAtTime(0.01, clickTime + 0.02);
+
+        osc.connect(clickVolume);
+        clickVolume.connect(creakSimulator);
+
+        osc.start(clickTime);
+        osc.stop(clickTime + 0.03);
+
+        pulseInterval += 0.0112; 
+        timeOffset += pulseInterval;
+    }
+}
+
+
 let DTMFTones = {
   '1': [697, 1209], '2': [697, 1336], '3': [697, 1477],
   '4': [770, 1209], '5': [770, 1336], '6': [770, 1477],
@@ -364,7 +420,7 @@ function playSwoosh() {
 	filter.frequency.exponentialRampToValueAtTime(300, now + duration);
 
 	gainNode.gain.setValueAtTime(0, now);
-	gainNode.gain.linearRampToValueAtTime(0.7, now + (duration * 0.3));
+	gainNode.gain.linearRampToValueAtTime(0.2, now + (duration * 0.3));
 	gainNode.gain.exponentialRampToValueAtTime(0.001, now + duration);
 
 	noiseSource.connect(filter);

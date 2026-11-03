@@ -83,6 +83,17 @@
   cursor: pointer;
 }
 
+#playScrambledDoors {
+  position: absolute;
+  background-color: red;
+  padding: 2% 2%;
+  top: 50%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.6667);
+  cursor: pointer;
+}
+
+
 
 /* ********************************** */
 #gameContainer {

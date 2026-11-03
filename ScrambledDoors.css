@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+
+:root {
+	--basis: 460px;
+	--basicWidth: var(--basis);
+	--basicHeight: var(--basis);
+}
+
+/* ************************************* */
+.renderInvisible {
+  visibility: hidden;
+}
+
+#welcomeScreen {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--basis)*0.01);
+  left: calc(var(--basis)*0.01);
+  width: calc(var(--basis)*1.05);
+  height: calc(var(--basis)*1.2);
+  background-color: coral;
+}
+
+#welcomeScreenSpan {
+  position: absolute;
+  color: white;
+  font-size: calc(var(--basis)*0.05);
+  font-family: "Times New Roman", Georgia, serif;
+  background-image: radial-gradient(circle, MidnightBlue, DarkGreen);
+  left: 8%;
+  top: 5%;
+  height: 82%;
+  width:  84%;
+  border: calc(var(--basis)*0.02) solid DarkBlue;
+  border-radius: 12%;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 5% 5% 5% 5%;
+}
+
+#playButton {
+  position: absolute;
+  background-color: grey;
+  padding: 2% 2%;
+  top: 88.5%;
+  left: 38%;
+  font-size: calc(var(--basis)*0.05);
+  cursor: pointer;
+}
+
+/* ***************************** */
+#playBoard {
+  position: absolute;
+  top: calc(var(--basis)*0.01);
+  left: calc(var(--basis)*0.01);
+  width: var(--basicWidth);
+  height: var(--basicHeight);
+  background-color: Aquamarine;
+  border: 5px solid black;
+}
+
+.doorContainer {
+  position: absolute;
+  width: calc(var(--basis)*0.15);
+  height: calc(var(--basis)*0.2);
+  background-color: grey;
+  border: 10px solid brown;
+  box-shadow: 0 calc(var(--basis)*0.02) calc(var(--basis)*0.045) rgba(0, 0, 0, 0.3);
+  perspective: calc(var(--basis)*0.60);
+}
+.doorContainerDisabled {
+  position: absolute;
+  width: calc(var(--basis)*0.15);
+  height: calc(var(--basis)*0.2);
+  background-color: green;
+  border: 10px solid brown;
+  box-shadow: 0 calc(var(--basis)*0.02) calc(var(--basis)*0.045) rgba(0, 0, 0, 0.3);
+  perspective: calc(var(--basis)*0.60);
+}
+
+.position1 {
+  top: var(--row1Top);
+  left: var(--col1Left);
+}
+
+.position2 {
+  top: var(--row1Top);
+  left: var(--col2Left);
+}
+
+.position3 {
+  top: var(--row1Top);
+  left: var(--col3Left);
+}
+
+.position4 {
+  top: var(--row2Top);
+  left: var(--col1Left);
+}
+
+.position5 {
+  top: var(--row2Top);
+  left: var(--col3Left);
+}
+
+.position6 {
+  top: var(--row3Top);
+  left: var(--col1Left);
+}
+
+.position7 {
+  top: var(--row3Top);
+  left: var(--col2Left);
+}
+
+.position8 {
+  top: var(--row3Top);
+  left: var(--col3Left);
+}
+
+.positionMiddle {
+  z-index: 2;
+  top: var(--row2Top);
+  left: var(--col2Left);
+}
+
+.secretNumber {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: yellow;
+  font-size: calc(var(--basis)*0.1);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+.door {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: SaddleBrown;
+  box-sizing: border-box;
+  border-right: 5px solid #70461e;
+  cursor: pointer;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+}
+.handle {
+  position: absolute;
+  top: 48%;
+  left: 80%;
+  width: 5%;
+  height: 5%;
+  content: '';
+  background-color: #ffd700;
+  border-radius: 50%;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.open {
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier( 0, 0, 0.58, 1);
+  transform: rotateY(-130deg);
+}
+
+.close {
+  z-index: 2;
+  transition: transform 1s cubic-bezier( 0, 0, 0.58, 1);
+  transform: rotateY(0deg);
+}
+#SDTitle {
+  z-index: 1;
+  position: absolute;
+  top: 40%;
+  left: 29%;
+  width: 43%;
+  height: 30%;
+  text-align: center;
+  font-family: "Baskerville", "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  font-size: calc(var(--basis)*0.07);
+  color: black;
+  text-shadow: 
+    1px 1px 0px green,
+    1px 1px 0px purple,
+    3px 3px 5px rgba(0, 0, 0, 0.5);
+}
+
+/* ************************************* */
+#noMatchGraphic {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--basis)*0.25);
+  left: calc(var(--basis)*0.25);
+  width: calc(var(--basis)*0.5);
+  height: calc(var(--basis)*0.3);
+  background-color: yellow;
+  border: calc(var(--basis)*0.02) solid black;
+  border-radius: 12%;
+}
+#NMGMSG {
+  position: absolute;
+  top: 4%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  font-size: calc(var(--basis)*0.08);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#NMGMSG2 {
+  position: absolute;
+  top: 63%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  font-size: calc(var(--basis)*0.065);
+  font-family: "Times New Roman", Georgia, serif;
+}
+#matchGraphic {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--basis)*0.25);
+  left: calc(var(--basis)*0.15);
+  width: calc(var(--basis)*0.7);
+  height: calc(var(--basis)*0.3);
+  background-color: #72fa78;
+  border: calc(var(--basis)*0.02) solid black;
+  border-radius: 12%;
+}
+#MGMSG {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  height: 70%;
+  font-size: calc(var(--basis)*0.065);
+  font-family: "Times New Roman", Georgia, serif;
+}
+
+/* ************************************ */
+.doorMovement {
+  z-index: 2;
+  animation-name: p1_to_p2;
+  animation-duration: 0.3s;
+}
+
+@keyframes p1_to_p2 {
+  from { top: var(--p1Top); left: var(--p1Left); }
+  to {  top: var(--p2Top); left: var(--p2Left);  }
+}
+
+
+/* *********************************** */
+#tallyBoard {
+  position: absolute;
+  top: calc(var(--basis)*1.05);
+  left: 0;
+  width: calc(var(--basis)*1.0);
+  height: calc(var(--basis)*0.3);
+  background-color: black;
+  border: 5px solid white;
+  border-radius: 15%;
+}
+#TBCPVLabel {
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.055);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+#TBCPVField {
+  position: absolute;
+  top: -14%;
+  left: 60%;
+  height: 21%;
+  width: 12%;
+  font-size: calc(var(--basis)*0.055);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: 2px solid black;
+  background-color: white;
+}
+#TBSLabel {
+  position: absolute;
+  top: 33%;
+  left: 41%;
+  font-size: calc(var(--basis)*0.055);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+
+.TBSFieldWhite {
+  background-color: white;
+}
+
+.TBSFieldRed {
+  background-color: red;
+}
+#TBSField {
+  position: absolute;
+  top: 15%;
+  left: 60%;
+  height: 21%;
+  width: 12%;
+  font-size: calc(var(--basis)*0.055);
+  font-family: "Times New Roman", Georgia, serif;
+  padding-left: 1%;
+  border: 2px solid black;
+}
+#TBGOMSG {
+  position: absolute;
+  top: 64%;
+  left: 10%;
+  font-size: calc(var(--basis)*0.075);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+#reButton {
+  position: absolute;
+  left: 60%;
+  top: 63%;
+  width: 22%;
+  height: 26%;
+  background-color: blue;
+  color: white;
+  text-align: center;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--basis)*0.055);
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#reButton:disabled {
+  position: absolute;
+  left: 60%;
+  top: 63%;
+  width: 22%;
+  height: 26%;
+  background-color: grey;
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+  font-size: calc(var(--basis)*0.055);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+/* *********************************** */
+#gameOver {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--basis)*0.1);
+  left: calc(var(--basis)*0.05);
+  width: calc(var(--basis)*.90);
+  height: calc(var(--basis)*0.45);
+  background-color: DarkRed;
+  border: 2px solid black;
+  border-radius: 15%;
+}
+#GOMSG {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  font-size: calc(var(--basis)*0.095);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+
+/* *********************************** */
+#resetGraphic {
+  position: absolute;
+  z-index: 2;
+  top: calc(var(--basis)*0.3);
+  left: calc(var(--basis)*0.15);
+  width: calc(var(--basis)*.70);
+  height: calc(var(--basis)*0.25);
+  background-color: DarkBlue;
+  border: 6px solid white;
+  border-radius: 15%;
+}
+#RGMSG {
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  font-size: calc(var(--basis)*0.11);
+  font-family: "Times New Roman", Georgia, serif;
+  color: white;
+}
+
+.fadeOutThenInPlayBoard {
+  z-index: 2;
+  animation-name: fadeOutThenInPlayBoardKF;
+  animation-duration: 1.2s;
+}
+
+@keyframes fadeOutThenInPlayBoardKF {
+  0% { opacity: 1.0; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1.0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

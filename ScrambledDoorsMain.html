@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="author" content="Gower Cox">
+<meta name="description" content="Logic puzzle">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="ScrambledDoors.css">
+<title>Scrambled Doors</title>
+</head>
+<body>
+
+
+<div id="welcomeScreen" class="renderInvisible">
+	<span id="welcomeScreenSpan"></span>
+	<button type="button" id="playButton"
+	onclick="enactPlayCallbackMC()"
+    ontouchstart="enactPlayCallbackT()">PLAY!</button>
+</div>
+
+<div id="playBoard">
+
+	<div id="doorContainer1" class="doorContainer position1" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer2" class="doorContainer position2" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer3" class="doorContainer position3" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer4" class="doorContainer position4" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer5" class="doorContainer position5" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer6" class="doorContainer position6" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer7" class="doorContainer position7" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+
+	<div id="doorContainer8" class="doorContainer position8" onclick="openDoorMC(this)" ontouchstart="openDoorT(this)">
+		<div class="secretNumber"></div>
+		<div class="door">
+			<div class="handle"></div>
+		</div>
+	</div>
+	
+	<span id="SDTitle">SCRAMBLED<br>DOORS</span>
+	
+</div>
+
+<div id="tallyBoard" class="renderInvisible">
+	<span id="TBCPVLabel">Current Match Value:</span>
+	<p id="TBCPVField"></p>
+	<span id="TBSLabel">Score:</span>
+	<p id="TBSField" class="TBSFieldWhite"></p>
+	<button id="reButton" type="button" onclick="resetMC()" ontouchstart="resetT()"></button>
+	<span id="TBGOMSG" class="renderInvisible">GAME OVER</span>
+</div>
+
+
+<div id="noMatchGraphic" class="renderInvisible">
+	<span id="NMGMSG">SORRY!<br>No Match!</span>
+	<span id="NMGMSG2"></span>
+</div>
+
+
+<div id="matchGraphic" class="renderInvisible">
+	<span id="MGMSG"></span>
+</div>
+
+<div id="gameOver" class="renderInvisible">
+	<span id="GOMSG"></span>
+</div>
+
+<div id="resetGraphic" class="renderInvisible">
+	<span id="RGMSG"></span>
+</div>
+
+
+</body>
+
+<script src="ScrambledDoors.js"></script>
+<script src="np_utilities.js"></script>
+<script src="sound.js"></script>
+
+</html>
